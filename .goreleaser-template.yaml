@@ -17,19 +17,18 @@ before:
     # you may remove this if you don't need go generate
     - go generate ./...
 
-# Cannot have replace directives in the go modules.
-gomod:
-  proxy: true
-  env:
-    - GOPROXY=https://proxy.golang.org,direct
-    - GOSUMDB=sum.golang.org
+#gomod:
+#  proxy: true
+#  env:
+#    - GOPROXY=https://proxy.golang.org,direct
+#    - GOSUMDB=sum.golang.org
 
 builds:
   - id: builds-linux
     env:
       - CGO_ENABLED=0
     goos:
-      - REPLACE_WITH_RELEASE_GOOS
+      - linux
     goarch:
       - amd64
     #OTHERARCH#      - arm
@@ -57,7 +56,7 @@ builds:
     env:
       - CGO_ENABLED=0
     goos:
-      - REPLACE_WITH_RELEASE_GOOS
+      - linux
     goarch:
       - amd64
       - arm
