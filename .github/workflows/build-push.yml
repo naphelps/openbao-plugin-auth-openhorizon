@@ -26,7 +26,7 @@ jobs:
       GOPATH: ${{ github.workspace }}/go 
       REPO_DIR: ${{ github.workspace }}/go/src/github.com/${{ github.repository }}
       IMAGE_NAME: amd64_bao
-      BINARY_NAME: hznbaoauth
+      BINARY_NAME: openbao-plugin-auth-openhorizon
 
     # Executed sequentially when job runs
     steps:
@@ -90,10 +90,10 @@ jobs:
           path: go/src/github.com/${{ github.repository }}
 
       # Prepare the environment
-      - name: Set up golang 1.22.8
+      - name: Set up golang 1.22.7
         uses: actions/setup-go@v5
         with:
-          go-version: '1.22.8'
+          go-version: '1.22.7'
           check-latest: true
 
       # Configure version variables for later steps, stored in our workflow env. variables
