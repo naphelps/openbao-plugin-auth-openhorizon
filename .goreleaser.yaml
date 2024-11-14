@@ -228,7 +228,7 @@ signs:
 
 release:
   github:
-    owner: ${{ .Env.GITHUB_REPOSITORY_OWNER }}
+    owner: '{{ .Env.GITHUB_REPOSITORY_OWNER }}'
     name: openbao-plugin-auth-openhorizon
 
   prerelease: ${{ if eq .Env.GITHUB_PRERELEASE "true" }}true{{ else }}false{{ end }}
