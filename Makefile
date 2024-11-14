@@ -77,6 +77,7 @@ test:
 
 .PHONY: dev-goreleaser
 #dev-goreleaser: export GPG_KEY_FILE := /dev/null
+dev-goreleaser: export GITHUB_REPOSITORY_OWNER = none
+dev-goreleaser: export RELEASE_BUILD_GOOS = linux
 dev-goreleaser:
-	sed -i 's/REPLACE_WITH_RELEASE_GOOS/linux/g' $(CURDIR)/.goreleaser-template.yaml > $(CURDIR)/.goreleaser.yaml
 	goreleaser release --clean --timeout=60m --verbose --parallelism 2 --snapshot --skip sbom,sign
