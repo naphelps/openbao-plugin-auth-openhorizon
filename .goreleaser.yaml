@@ -150,14 +150,14 @@ builds:
 report_sizes: true
 
 checksum:
-  name_template: '{{ .ProjectName }}_{{ .Version }}_{{- title .Env.RELEASE_BUILD_GOOS }}-checksums.txt'
+  name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Env.RELEASE_BUILD_GOOS }}-checksums.txt'
   disable: false
 
 archives:
   - format: tar.gz
     # this name template makes the OS and Arch compatible with the results of `uname`.
     name_template: >-
-      {{ .ProjectName }}_{{ .Version }}_{{- title .Os }}_
+      {{ .ProjectName }}_{{ .Version }}_{{ .Os }}_
       {{- if eq .Arch "amd64" }}x86_64
       {{- else if eq .Arch "386" }}i386
       {{- else }}{{ .Arch }}{{ end }}
@@ -231,8 +231,8 @@ release:
     owner: '{{ .Env.GITHUB_REPOSITORY_OWNER }}'
     name: openbao-plugin-auth-openhorizon
 
-  prerelease: ${{ if eq .Env.GITHUB_PRERELEASE "true" }}true{{ else }}false{{ end }}
-  make_latest: ${{ if eq .Env.GITHUB_RELEASE_MAKE_LATEST "true" }}true{{ else }}false{{ end }}
+  prerelease: '{{- if eq .Env.GITHUB_PRERELEASE "true" }}true{{ else }}false{{ end }}'
+  make_latest: '{{- if eq .Env.GITHUB_RELEASE_MAKE_LATEST "true" }}true{{ else }}false{{ end }}'
   disable: false
 
   # We overwrite the following variables to support multi-stage execution of
