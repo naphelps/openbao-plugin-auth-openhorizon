@@ -239,6 +239,6 @@ release:
   # goreleaser on the same artifacts with different GOOS values, to avoid
   # running out of disk space. We can't support draft releases because the same
   # release needs to be used for all artifacts uploaded from separate stages.
-  draft: true
+  draft: false
   replace_existing_draft: false
   replace_existing_artifacts: false
