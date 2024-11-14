@@ -231,8 +231,8 @@ release:
     owner: '{{ .Env.GITHUB_REPOSITORY_OWNER }}'
     name: openbao-plugin-auth-openhorizon
 
-  prerelease: '{{- if eq .Env.GITHUB_PRERELEASE "true" }}true{{ else }}false{{ end }}'
-  make_latest: '{{- if eq .Env.GITHUB_RELEASE_MAKE_LATEST "true" }}true{{ else }}false{{ end }}'
+  prerelease: '{{ .Env.GITHUB_RELEASE_PRERELEASE }}'
+  make_latest: '{{ .Env.GITHUB_RELEASE_MAKE_LATEST }}'
   disable: false
 
   # We overwrite the following variables to support multi-stage execution of
